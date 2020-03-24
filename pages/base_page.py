@@ -17,3 +17,6 @@ class BasePage:
         except NoSuchElementException:
             return False
         return True
+
+    def solve_quiz_and_get_code(self):
+
