@@ -11,7 +11,7 @@ class LoginPageLocators:
 
 
 class ProductPageLocators:
-    ADD_BUTTON = (By.CLASS_NAME, "btn-add-to-basket")
-    ADD_ALERT = (By.CLASS_NAME, "alertinner ")
-    PRODUCT_PRICE = (By.CLASS_NAME, "price_color")
+    ADD_BUTTON = (By.XPATH, "//button[@value='Добавить в корзину']")
+    ADD_ALERT = (By.XPATH, "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]")
+    PRODUCT_PRICE = (By.XPATH, "/html[1]/body[1]/div[2]/div[1]/div[2]/div[2]/article[1]/div[1]/div[2]/p[1]")
     BASKET_PRICE = (By.XPATH, "/html[1]/body[1]/div[2]/div[1]/div[1]/div[3]/div[1]/p[1]/strong[1]")
