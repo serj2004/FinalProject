@@ -20,15 +20,22 @@ class ProductPage(BasePage):
         pr_n = product_name_taking()
         assert pr_n in text
 
+    def product_price_taking(self):
+
+        """Метод возвращающий цену товара на странице товара"""
+
+        product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text[:-2]
+        return product_price
+
     def basket_should_be_increased(self, product_price_taking):
 
         """Метод проверки равности стоимости товара и стоимости корзины"""
 
-        self.guest_can_add_product_to_basket()
-        basket_price = self.browser.find_element(*ProductPageLocators.BASKET_PRICE).text
+        # self.guest_can_add_product_to_basket()
+        basket_price = self.browser.find_element(*ProductPageLocators.BASKET_PRICE).text[:-2]
         bk_p = basket_price
-        pr_p = product_price_taking()
-        assert (bk_p == pr_p), 'Стоимость товара и корзины отличаются!'
+        pr_p = float(product_price_taking.product_price)
+        assert (float(bk_p) == float(pr_p)), 'Стоимость товара и корзины отличаются!'
 
     def product_name_taking(self):
 
@@ -37,10 +44,5 @@ class ProductPage(BasePage):
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
         return product_name
 
-    def product_price_taking(self):
 
-        """Метод возвращающий цену товара на странице товара"""
-
-        product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
-        return product_price
 
