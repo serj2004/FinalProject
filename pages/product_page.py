@@ -6,29 +6,24 @@ class ProductPage(BasePage):
 
     def guest_can_add_product_to_basket(self):
 
-        """Метод добавления в корзину"""
+        """Метод выполняющий добавление в корзину"""
 
         add_button = self.browser.find_element(*ProductPageLocators.ADD_BUTTON)
         add_button.click()
 
-    def product_should_be_added(self, product_name_taking):
+    def product_should_be_added(self):
 
-        """Метод проверки добавления в корзину"""
+        """Метод возвращающий текст сообщения о добавлении товара в корзину"""
 
-        self.guest_can_add_product_to_basket()
-        text = self.browser.find_element(*ProductPageLocators.ADD_ALERT).text
-        pr_n = product_name_taking()
-        assert pr_n in text
+        alert_text = self.browser.find_element(*ProductPageLocators.ADD_ALERT)
+        return alert_text.text
 
-    def basket_should_be_increased(self, product_price_taking):
+    def basket_should_be_increased(self):
 
-        """Метод проверки равности стоимости товара и стоимости корзины"""
+        """Метод возвращающий стоимость корзины"""
 
-        self.guest_can_add_product_to_basket()
-        basket_price = self.browser.find_element(*ProductPageLocators.BASKET_PRICE).text
-        bk_p = basket_price
-        pr_p = product_price_taking()
-        assert (bk_p == pr_p), 'Стоимость товара и корзины отличаются!'
+        basket_price = self.browser.find_element(*ProductPageLocators.BASKET_PRICE)
+        return basket_price.text
 
     def product_name_taking(self):
 

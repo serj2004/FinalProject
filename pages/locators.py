@@ -12,7 +12,7 @@ class LoginPageLocators:
 
 class ProductPageLocators:
     ADD_BUTTON = (By.XPATH, "//button[@value='Добавить в корзину']")
-    ADD_ALERT = (By.XPATH, "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/strong[1]")
+    ADD_ALERT = (By.XPATH, "//div[@id='messages']//div[1]//div[1]")
     PRODUCT_PRICE = (By.XPATH, "//p[@class='price_color']")
     BASKET_PRICE = (By.XPATH, "/html[1]/body[1]/div[2]/div[1]/div[1]/div[3]/div[1]/p[1]/strong[1]")
-    PRODUCT_NAME = (By.XPATH, "//h1")
+    PRODUCT_NAME = (By.XPATH, "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/strong[1]")
