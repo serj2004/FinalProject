@@ -11,19 +11,19 @@ class ProductPage(BasePage):
         add_button = self.browser.find_element(*ProductPageLocators.ADD_BUTTON)
         add_button.click()
 
-    def product_should_be_added(self, product_name_taking):
+    def product_should_be_added(self):
 
         """Метод возвращающий текст сообщения о добавлении товара в корзину """
 
         text = self.browser.find_element(*ProductPageLocators.ADD_ALERT).text
         return text
 
-    def basket_should_be_increased(self, product_price_taking):
+    def basket_should_be_increased(self):
 
         """Метод возвращающий цену корзины"""
 
-        basket_price = self.browser.find_element(*ProductPageLocators.BASKET_PRICE).text
-        return basket_price
+        basket_price = self.browser.find_elements(*ProductPageLocators.BASKET_PRICE)[-1]
+        return basket_price.text
 
     def product_name_taking(self):
 
