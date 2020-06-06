@@ -15,8 +15,8 @@ class ProductPage(BasePage):
 
         """Метод возвращающий текст сообщения о добавлении товара в корзину """
 
-        text = self.browser.find_element(*ProductPageLocators.ADD_ALERT).text
-        return text
+        text = self.browser.find_elements(*ProductPageLocators.ADD_ALERT)[-3]
+        return text.text
 
     def basket_should_be_increased(self):
 
@@ -38,4 +38,11 @@ class ProductPage(BasePage):
 
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
         return product_price
+
+    def cart_and_product_comparison(self, pr_p: str, bk_p: str) -> bool:
+
+        """Метод проверяющий равенство цены товара и цены корзины"""
+
+        return pr_p == bk_p
+
 
