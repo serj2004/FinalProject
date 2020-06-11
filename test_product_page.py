@@ -66,3 +66,25 @@ def test_basket_should_be_increased(browser, link):
         print("Цены не равны!")
 
 
+@pytest.mark.xfail
+def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
+    page = ProductPage(browser, link)
+    page.open()
+    page.guest_can_add_product_to_basket()
+    # page.solve_quiz_and_get_code()
+    page.should_not_be_success_message()
+
+
+def test_guest_cant_see_success_message(browser):
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_not_be_success_message()
+
+
+@pytest.mark.xfail
+def test_message_disappeared_after_adding_product_to_basket(browser):
+    page = ProductPage(browser, link)
+    page.open()
+    page.guest_can_add_product_to_basket()
+    # page.solve_quiz_and_get_code()
+    page.success_message_should_be_disappeared()

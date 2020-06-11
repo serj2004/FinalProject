@@ -45,4 +45,17 @@ class ProductPage(BasePage):
 
         return pr_p == bk_p
 
+    def should_not_be_success_message(self):
+
+        """Метод проверяющий отсутствие сообщения о добавлении товара в корзину"""
+
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def success_message_should_be_disappeared(self):
+        """Метод проверяющий исчезновение сообщения о добавлении товара в корзину"""
+
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
 

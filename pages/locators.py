@@ -16,3 +16,4 @@ class ProductPageLocators:
     PRODUCT_PRICE = (By.XPATH, "//p[@class='price_color']")
     BASKET_PRICE = (By.XPATH, "//strong")
     PRODUCT_NAME = (By.XPATH, "//h1")
+    SUCCESS_MESSAGE = (By.XPATH, "//div[@id='messages']//div[1]//div[1]")
