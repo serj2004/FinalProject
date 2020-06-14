@@ -3,6 +3,7 @@ import math
 from selenium.common.exceptions import NoAlertPresentException, TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from .locators import BasePageLocators
 
 
 class BasePage:
@@ -39,6 +40,13 @@ class BasePage:
 
         return True
 
+    def go_to_login_page(self):
+        l_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        l_link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
         x = alert.text.split(" ")[2]
@@ -52,3 +60,10 @@ class BasePage:
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+    def guest_can_go_to_basket(self):
+
+        """Переход в корзину по кнопке в шапке сайта"""
+
+        b_v_button = self.browser.find_element(*BasketPageLocators.BASKET_VIEWING)
+        b_v_button.click()
