@@ -3,7 +3,7 @@ import math
 from selenium.common.exceptions import NoAlertPresentException, TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from .locators import BasePageLocators
+from .locators import BasePageLocators, BasketPageLocators
 
 
 class BasePage:
@@ -65,5 +65,5 @@ class BasePage:
 
         """Переход в корзину по кнопке в шапке сайта"""
 
-        b_v_button = self.browser.find_element(*BasketPageLocators.BASKET_VIEWING)
+        b_v_button = self.browser.find_element(*BasketPageLocators.BASKET_VIEWING_BUTTON)
         b_v_button.click()

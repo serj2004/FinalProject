@@ -1,5 +1,5 @@
-from base_page import BasePage
-from locators import BasketPageLocators
+from .base_page import BasePage
+from .locators import BasketPageLocators
 
 
 class BasketPage(BasePage):
@@ -10,4 +10,4 @@ class BasketPage(BasePage):
 
     def should_be_text_that_basket_is_empty(self):
         empty_basket_info = self.browser.find_element(*BasketPageLocators.EMPTY_BASKET_TEXT).text()
-        return empty_basket_info
+        assert empty_basket_info == "Your basket is empty."
