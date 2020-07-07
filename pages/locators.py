@@ -8,8 +8,8 @@ class BasePageLocators:
 
 class BasketPageLocators:
     BASKET_VIEWING_BUTTON = (By.XPATH, "//a[@class='btn btn-default']")
-    BASKET_PRODUCT_QUANTITY = (By.CSS_SELECTOR, "#id_form-0-quantity")
-    EMPTY_BASKET_TEXT = (By.XPATH, "//div[@id='messages']//p[1]")
+    BASKET_PRODUCT_ITEM = (By.XPATH, "//div[@class='basket-items']//div[@class='row']")
+    EMPTY_BASKET_TEXT = (By.XPATH, "//p[contains(text(),'Your basket is empty.')]")
 
 
 class LoginPageLocators:
